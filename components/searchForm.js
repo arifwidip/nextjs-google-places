@@ -31,12 +31,12 @@ export default function SearchForm({ action }) {
       <form className="flex" onSubmit={handleSubmit}>
         <input
           type="text"
-          className="form-input block py-3 w-3/4"
+          className="form-input block py-3 w-3/4 rounded-l-md rounded-r-none"
           placeholder="Type keywords..."
           value={query}
           onChange={handleInputChange}
         />
-        <button type="submit" className="w-1/4 px-5 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo">
+        <button type="submit" className="w-1/4 px-5 py-3 border border-transparent text-base leading-6 font-medium rounded-r-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo">
           Search
         </button>
       </form>
