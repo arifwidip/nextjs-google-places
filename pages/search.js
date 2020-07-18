@@ -18,10 +18,10 @@ export async function getServerSideProps({ query }) {
       }
 
       return {
-        address: item.formatted_address,
+        formatted_address: item.formatted_address,
         icon: item.icon,
         name: item.name,
-        id: item.place_id,
+        place_id: item.place_id,
         types: item.types,
         image: image,
       }
@@ -35,7 +35,7 @@ export async function getServerSideProps({ query }) {
   }
 }
 
-export default function TestPage({ data }) {
+export default function SearchPage({ data }) {
   return (
     <Layout>
       <div className="container mx-auto">
@@ -47,7 +47,7 @@ export default function TestPage({ data }) {
           { data.status === 'OK' && (
             <div className="list">
               { data.candidates.map((place, i) => (
-                <PlaceItem place={place} key={place.id} />
+                <PlaceItem place={place} key={place.place_id} />
               )) }
             </div>
           )}
