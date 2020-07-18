@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import SearchForm from '../components/searchForm'
 import PlaceItem from '../components/placeItem'
 import Layout from '../components/layout'
@@ -38,8 +39,12 @@ export async function getServerSideProps({ query }) {
 export default function SearchPage({ data }) {
   return (
     <Layout>
-      <div className="container mx-auto">
-        <div className="m-20 w-full md:w-8/12 lg:w-6/12 mx-auto mb-20">
+      <Head>
+        <title>Search Place</title>
+      </Head>
+
+      <div className="container mx-auto px-10">
+        <div className="m-20 w-full lg:w-6/12 mx-auto mb-20">
           <SearchForm action="/search" />
 
           <hr className="my-10" />

@@ -1,12 +1,14 @@
 import Link from 'next/link'
+import Head from 'next/head'
 import Layout from '../../components/layout'
 import PlaceItem from '../../components/placeItem'
 import PlacePhoto from '../../components/placePhoto'
 
 export async function getServerSideProps(context) {
-  const url = `https://maps.googleapis.com/maps/api/place/details/json?key=${process.env.API_KEY}&place_id=${context.params.id}`
+  const url = `https://maps.googleapis.com/maps/api/place/details/json?key=${process.env.API_KEY}&place_id=${context.params.id}&fields=formatted_address,icon,name,photos,place_id,types,photos`
   const res = await fetch(url);
   const resJson = await res.json();
+  console.log(url)
 
   let photos = [];
 
@@ -36,8 +38,12 @@ export async function getServerSideProps(context) {
 export default function TestPage({ data }) {
   return (
     <Layout>
-      <div className="container mx-auto">
-        <div className="m-20 w-full md:w-8/12 lg:w-6/12 mx-auto mb-20">
+      <Head>
+        <title>{ data.result.name }</title>
+      </Head>
+
+      <div className="container mx-auto px-10">
+        <div className="m-20 w-full lg:w-6/12 mx-auto mb-20">
 
         { data.status === 'OK' && (
           <React.Fragment>
@@ -55,7 +61,7 @@ export default function TestPage({ data }) {
 
             <div className="flex -mx-2 flex-wrap">
               { data.photos.map(photo => (
-                <div className="w-4/12 mb-4 px-2">
+                <div className="w-6/12 md:w-4/12 mb-4 px-2">
                   <PlacePhoto photo={photo} />
                 </div>
               )) }
