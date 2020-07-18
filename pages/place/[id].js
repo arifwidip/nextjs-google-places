@@ -8,7 +8,6 @@ export async function getServerSideProps(context) {
   const url = `https://maps.googleapis.com/maps/api/place/details/json?key=${process.env.API_KEY}&place_id=${context.params.id}&fields=formatted_address,icon,name,photos,place_id,types,photos`
   const res = await fetch(url);
   const resJson = await res.json();
-  console.log(url)
 
   let photos = [];
 
@@ -35,7 +34,7 @@ export async function getServerSideProps(context) {
   }
 }
 
-export default function TestPage({ data }) {
+export default function PlaceDetails({ data }) {
   return (
     <Layout>
       <Head>
@@ -60,8 +59,8 @@ export default function TestPage({ data }) {
             <hr className="my-10" />
 
             <div className="flex -mx-2 flex-wrap">
-              { data.photos.map(photo => (
-                <div className="w-6/12 md:w-4/12 mb-4 px-2">
+              { data.photos.map((photo, i) => (
+                <div className="w-6/12 md:w-4/12 mb-4 px-2" key={i}>
                   <PlacePhoto photo={photo} />
                 </div>
               )) }

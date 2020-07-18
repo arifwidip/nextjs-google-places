@@ -16,8 +16,8 @@ export default function PlacePhoto({ photo }) {
 
         <div className="attributions text-xs text-gray-600 mt-3">
           <div className="font-bold">Attributions:</div>
-          {photo.attributions.map(item => (
-            <div dangerouslySetInnerHTML={{ __html: item }}></div>
+          {photo.attributions.map((item, i) => (
+            <div dangerouslySetInnerHTML={{ __html: item }} key={i}></div>
           ))}
         </div>
       </div>
