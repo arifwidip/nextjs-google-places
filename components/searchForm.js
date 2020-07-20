@@ -52,7 +52,7 @@ export default function SearchForm({ action }) {
         <React.Fragment>
           <h1 className="text-3xl leading-9 font-extrabold tracking-tight text-gray-900 mb-4">Search Place</h1>
           <form className="flex" onSubmit={handleSubmit}>
-            <div className="w-3/4">
+            <div className="w-full">
               <Autocomplete
                 onLoad={onLoad}
                 fields={['place_id']}
@@ -61,15 +61,12 @@ export default function SearchForm({ action }) {
                 <input
                   ref={inputEl}
                   type="text"
-                  className="form-input block py-3 w-full rounded-l-md rounded-r-none"
+                  className="form-input block py-3 w-full rounded-md"
                   placeholder="Type keywords..."
                   onKeyPress={onKeypress}
                 />
               </Autocomplete>
             </div>
-            <button type="submit" className="w-1/4 px-5 py-3 border border-transparent text-base leading-6 font-medium rounded-r-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo">
-              Search
-            </button>
           </form>
         </React.Fragment>
       ) }
